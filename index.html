@@ -1,0 +1,2639 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioacchino Caliendo - Backend Engineer</title>
+    <meta name="description" content="Backend Engineer specializzato in Java, Python, Microservizi e Performance Engineering. Portfolio e CV digitale.">
+
+    <style>
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5aa0;
+            --primary-light: #3d6bb3;
+            --secondary: #1a365d;
+            --accent: #e3f2fd;
+            --text: #333;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* === WEB LAYOUT (default) === */
+        .web-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .web-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .web-header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="5" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="15" r="1" fill="white" opacity="0.1"/><circle cx="70" cy="8" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="20" fill="url(%23grain)"/></svg>');
+                opacity: 0.3;
+            }
+
+        .web-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .web-photo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .web-name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .web-title {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .web-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .web-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease;
+        }
+
+            .web-contact-item:hover {
+                transform: translateY(-2px);
+            }
+
+        /* DOWNLOAD BUTTONS */
+        .download-buttons {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(44, 90, 160, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+            .download-btn:hover {
+                background: var(--primary-light);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(44, 90, 160, 0.4);
+            }
+
+            .download-btn.short {
+                background: #059669;
+            }
+
+                .download-btn.short:hover {
+                    background: #047857;
+                }
+
+            .download-btn.europass {
+                background: #dc2626;
+            }
+
+                .download-btn.europass:hover {
+                    background: #b91c1c;
+                }
+
+        .web-content {
+            padding: 3rem 2rem;
+        }
+
+        .web-section {
+            margin-bottom: 3rem;
+        }
+
+        .web-section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+            .web-section-title.sticky {
+                color: white;
+                background: var(--primary);
+                padding: 1rem 2rem;
+                border-radius: 0;
+                box-shadow: 0 2px 20px rgba(44, 90, 160, 0.3);
+            }
+
+                .web-section-title.sticky::after {
+                    display: none;
+                }
+
+            .web-section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background: var(--primary-light);
+            }
+
+        .web-experience-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .web-experience-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            }
+
+        .web-job-header {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .web-job-period {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .web-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .web-tech-tag {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(44, 90, 160, 0.2);
+        }
+
+        .web-description {
+            color: var(--text);
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .web-highlight {
+            background: linear-gradient(120deg, #fff3cd 0%, #fff3cd 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .web-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .web-project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .web-project-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            }
+
+            .web-project-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            }
+
+        .web-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .web-skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .web-skill-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .web-skill-list {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .web-header {
+                padding: 2rem 1rem;
+            }
+
+            .web-name {
+                font-size: 2.2rem;
+            }
+
+            .web-title {
+                font-size: 1.1rem;
+            }
+
+            .web-contact {
+                gap: 1rem;
+            }
+
+            .web-content {
+                padding: 2rem 1rem;
+            }
+
+            .web-section-title {
+                font-size: 1.6rem;
+            }
+
+            .download-buttons {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .download-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .web-projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .web-skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === PRINT STYLES === */
+        .print-container, .short-container, .europass-container {
+            display: none;
+        }
+
+        /* === STANDARD CV PRINT === */
+        @media print {
+            .download-buttons {
+                display: none !important;
+            }
+
+            .web-container {
+                display: none !important;
+            }
+
+            .short-container, .europass-container {
+                display: none !important;
+            }
+
+            body.print-standard .print-container {
+                display: block !important;
+            }
+
+            body {
+                font-size: 12px;
+                line-height: 1.3;
+                padding: 15px;
+                color: #333;
+                background: white;
+            }
+
+            .print-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+            }
+
+            .print-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 18px;
+                padding-bottom: 12px;
+                border-bottom: 3px solid #2c5aa0;
+            }
+
+            .print-photo-placeholder {
+                width: 100px;
+                height: 130px;
+                border: 2px dashed #ccc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                color: #666;
+                text-align: center;
+                flex-shrink: 0;
+                background: #f9f9f9;
+            }
+
+            .print-header-info {
+                flex: 1;
+            }
+
+            .print-name {
+                font-size: 28px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+            }
+
+            .print-contact-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px 20px;
+                font-size: 11px;
+            }
+
+            .print-section {
+                margin-bottom: 15px;
+            }
+
+            .print-section-title {
+                font-size: 14px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+                text-transform: uppercase;
+                border-bottom: 2px solid #2c5aa0;
+                padding-bottom: 2px;
+            }
+
+            .print-experience-item, .print-project-item {
+                margin-bottom: 12px;
+                padding: 10px;
+                background: #fafbfc;
+                border-left: 3px solid #2c5aa0;
+                border-radius: 0 3px 3px 0;
+                page-break-inside: avoid;
+            }
+
+            .print-job-header {
+                font-weight: bold;
+                color: #1a365d;
+                margin-bottom: 3px;
+                font-size: 13px;
+            }
+
+            .print-job-period {
+                color: #666;
+                font-size: 11px;
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+
+            .print-tech-stack {
+                background: #e3f2fd;
+                padding: 4px 6px;
+                margin: 5px 0;
+                border-radius: 3px;
+                font-size: 10px;
+                color: #1565c0;
+                border: 1px solid #bbdefb;
+            }
+
+            .print-description {
+                margin-top: 3px;
+                text-align: justify;
+                line-height: 1.3;
+                font-size: 11px;
+            }
+
+            .print-skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 15px;
+                margin-top: 10px;
+            }
+
+            .print-skill-category {
+                background: white;
+                padding: 8px;
+                border-radius: 4px;
+                border: 1px solid #e0e7ff;
+            }
+
+            .print-skill-title {
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 3px;
+                font-size: 11px;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .print-two-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .print-education-item {
+                background: white;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+                border: 1px solid #e5e7eb;
+            }
+
+            .print-highlight {
+                background: #fff3cd;
+                padding: 2px 4px;
+                border-radius: 3px;
+                font-weight: bold;
+            }
+
+            .print-footer {
+                margin-top: 15px;
+                font-size: 9px;
+                color: #666;
+                text-align: center;
+                border-top: 1px solid #eee;
+                padding-top: 8px;
+            }
+
+            @page {
+                size: A4;
+                margin: 0.4in;
+            }
+        }
+
+        /* === SHORT CV PRINT === */
+        @media print {
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                font-size: 11px;
+                line-height: 1.35;
+                color: #333;
+                background: white;
+                padding: 12mm;
+            }
+
+            .cv-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+            }
+
+            /* HEADER */
+            .cv-header {
+                display: flex;
+                align-items: flex-start;
+                gap: 15px;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 3px solid #2c5aa0;
+            }
+
+            .photo-section {
+                width: 85px;
+                height: 110px;
+                border: 2px solid #2c5aa0;
+                overflow: hidden;
+                border-radius: 6px;
+                flex-shrink: 0;
+                background: #f9f9f9;
+            }
+
+                .photo-section img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            .header-info {
+                flex: 1;
+            }
+
+            .name {
+                font-size: 26px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 4px;
+            }
+
+            .title {
+                font-size: 13px;
+                color: #666;
+                margin-bottom: 12px;
+                font-style: italic;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3px 15px;
+                font-size: 10px;
+            }
+
+            /* SECTIONS */
+            .section {
+                margin-bottom: 18px;
+            }
+
+            .section-title {
+                font-size: 13px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+                text-transform: uppercase;
+                border-bottom: 2px solid #2c5aa0;
+                padding-bottom: 2px;
+                display: inline-block;
+                min-width: 150px;
+            }
+
+            /* EXPERIENCE */
+            .experience-item {
+                margin-bottom: 14px;
+                padding: 8px;
+                background: #fafbfc;
+                border-left: 3px solid #2c5aa0;
+                border-radius: 0 4px 4px 0;
+                page-break-inside: avoid;
+            }
+
+            .job-title {
+                font-weight: bold;
+                color: #1a365d;
+                font-size: 12px;
+                margin-bottom: 2px;
+            }
+
+            .job-period {
+                color: #666;
+                font-size: 10px;
+                font-style: italic;
+                margin-bottom: 4px;
+            }
+
+            .tech-stack {
+                background: #e3f2fd;
+                padding: 3px 5px;
+                margin: 4px 0;
+                border-radius: 3px;
+                font-size: 9px;
+                color: #1565c0;
+                border: 1px solid #bbdefb;
+            }
+
+            .description {
+                font-size: 10px;
+                line-height: 1.3;
+                text-align: justify;
+            }
+
+            .highlight {
+                background: #fff3cd;
+                padding: 1px 3px;
+                border-radius: 2px;
+                font-weight: bold;
+            }
+
+            /* SKILLS GRID */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 12px;
+                margin-top: 8px;
+            }
+
+            .skill-category {
+                background: white;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid #e0e7ff;
+            }
+
+            .skill-title {
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 3px;
+                font-size: 10px;
+            }
+
+            .skill-list {
+                font-size: 9px;
+                line-height: 1.3;
+                color: #555;
+            }
+
+            /* PROJECTS */
+            .project-item {
+                margin-bottom: 10px;
+                padding: 6px;
+                background: #f8fafc;
+                border-left: 2px solid #059669;
+                border-radius: 0 3px 3px 0;
+            }
+
+            .project-title {
+                font-weight: bold;
+                color: #1a365d;
+                font-size: 11px;
+                margin-bottom: 1px;
+            }
+
+            .project-period {
+                color: #666;
+                font-size: 9px;
+                font-style: italic;
+                margin-bottom: 3px;
+            }
+
+            /* TWO COLUMN LAYOUT */
+            .two-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                margin-top: 8px;
+            }
+
+            /* EDUCATION */
+            .education-item {
+                margin-bottom: 8px;
+                padding: 6px;
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 3px;
+            }
+
+            /* FOOTER */
+            .footer {
+                margin-top: 15px;
+                font-size: 8px;
+                color: #666;
+                text-align: center;
+                border-top: 1px solid #eee;
+                padding-top: 8px;
+            }
+
+            @page {
+                size: A4;
+                margin: 0.5in;
+            }
+        }
+
+        /* Hide for screen view */
+        .cv-container {
+            display: none;
+        }
+
+        @media print {
+            .cv-container {
+                display: block !important;
+            }
+        }
+
+        /* === EUROPASS CV PRINT === */
+        @media print {
+            body.print-europass .europass-container {
+                display: block !important;
+            }
+
+            body.print-europass .print-container,
+            body.print-europass .short-container {
+                display: none !important;
+            }
+
+            .europass-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+                font-family: Arial, sans-serif;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .europass-header {
+                background: #1e3a8a;
+                color: white;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .europass-name {
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .europass-title {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .europass-contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                font-size: 10px;
+            }
+
+            .europass-section {
+                margin-bottom: 20px;
+            }
+
+            .europass-section-title {
+                background: #1e3a8a;
+                color: white;
+                padding: 8px 15px;
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            .europass-entry {
+                display: grid;
+                grid-template-columns: 120px 1fr;
+                gap: 15px;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+                .europass-entry:last-child {
+                    border-bottom: none;
+                }
+
+            .europass-dates {
+                font-size: 10px;
+                color: #666;
+                font-weight: bold;
+            }
+
+            .europass-content {
+                font-size: 10px;
+            }
+
+            .europass-job-title {
+                font-weight: bold;
+                color: #1e3a8a;
+                margin-bottom: 3px;
+            }
+
+            .europass-organization {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .europass-description {
+                line-height: 1.3;
+                text-align: justify;
+            }
+
+            .europass-skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .europass-skill-category {
+                margin-bottom: 10px;
+            }
+
+            .europass-skill-title {
+                font-weight: bold;
+                color: #1e3a8a;
+                margin-bottom: 5px;
+            }
+
+            .europass-footer {
+                margin-top: 30px;
+                font-size: 9px;
+                color: #666;
+                text-align: center;
+                border-top: 1px solid #e5e7eb;
+                padding-top: 10px;
+            }
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #ddd;
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <!-- WEB LAYOUT -->
+    <div class="web-container">
+        <div class="download-buttons">
+            <button class="download-btn" onclick="printCV('standard')">
+                📄 Download CV
+            </button>
+            <button class="download-btn short" onclick="printCV('short')">
+                📋 Short CV
+            </button>
+            <button class="download-btn europass" onclick="printCV('europass')">
+                🇪🇺 Europass CV
+            </button>
+        </div>
+
+        <header class="web-header">
+            <div class="web-header-content">
+                <div class="web-photo-container">
+                    <img src="./profile-pc.jpg"/>
+                </div>
+                <h1 class="web-name">GIOACCHINO CALIENDO</h1>
+                <p class="web-title">Backend Engineer • Solution Architect • IoT Enthusiast</p>
+                <div class="web-contact">
+                    <div class="web-contact-item">
+                        📧 caliendo.gioacchino001@gmail.com
+                    </div>
+                    <div class="web-contact-item">
+                        📱 +39 346 23 46 671
+                    </div>
+                    <div class="web-contact-item">
+                        💼 <a href="https://www.linkedin.com/in/gioacchino-caliendo-55917416a">LinkedIn</a>
+                    </div>
+                    <div class="web-contact-item">
+                        📍 <a href="https://www.google.com/maps/place/84014+Nocera+Inferiore+SA">Nocera Inferiore (SA)</a>
+                    </div>
+                    <div class="web-contact-item">
+                        💻 <a href="https://joe-cyber.github.io/">Github</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="web-content">
+            <!-- Experience Section -->
+            <section class="web-section">
+                <h2 class="web-section-title">Esperienza Lavorativa</h2>
+
+                <div class="web-experience-item">
+                    <h3 class="web-job-header">Backend Engineer - System Management SRL</h3>
+                    <p class="web-job-period">09/2023 – In corso | Progressione: Java Developer Jr → Backend Engineer</p>
+
+                    <div class="web-tech-stack">
+                        <span class="web-tech-tag">Java Spring Boot</span>
+                        <span class="web-tech-tag">Python</span>
+                        <span class="web-tech-tag">Docker</span>
+                        <span class="web-tech-tag">Kubernetes</span>
+                        <span class="web-tech-tag">AWS</span>
+                        <span class="web-tech-tag">TimescaleDB</span>
+                        <span class="web-tech-tag">Kafka</span>
+                        <span class="web-tech-tag">gRPC</span>
+                    </div>
+
+                    <div class="web-description">
+                        <p>Sviluppo di sistema multi-linguaggio per system integration (Java/JavaScript/Python), architetturalmente flessibile da monolita a piattaforma microservizi. <span class="web-highlight">Sviluppatore con visione end-to-end dell’intero prodotto</span> dopo uscita dei senior developer.</p>
+
+                        <p><strong>Progetti Chiave:</strong></p>
+                        <ul>
+                            <li><strong>Smart Cities Platform</strong> - Sistema distribuito microservizi per servizi urbani intelligenti</li>
+                            <li><strong>Sistema Monitoraggio Depositi</strong> - Integrazione smart camera con cloud AWS</li>
+                            <li><strong>Monitoraggio Rete Alta Criticità</strong> - Architettura monolitica per ambienti enterprise</li>
+                        </ul>
+
+                        <p><strong>Performance Engineering:</strong> <span class="web-highlight">Ottimizzazione sistema da 2M telemetrie/45sec a 30M+/1.3sec</span> tramite integrazione TimescaleDB.</p>
+
+                        <p><strong>Leadership Tecnica:</strong> Training nuovi BE developers, proposte architetturali (cluster HA, versione light per edge computing, piattaforma recovery microservizi).</p>
+
+                        <p><strong>Business Impact:</strong> Partecipazione riunioni strategiche commerciali, <span class="web-highlight">contributo decisivo per investimento aziendale sulla piattaforma</span>.</p>
+                    </div>
+                </div>
+
+                <div class="web-experience-item">
+                    <h3 class="web-job-header">Software Developer - Area Ricerca - Nexsoft SPA</h3>
+                    <p class="web-job-period">02/2023 – 06/2023</p>
+                    <div class="web-description">
+                        <p>Proseguimento attività di ricerca in continuità con progetto Object Wrapping. Estensione funzionalità applicazioni esistenti con integrazione nuove feature e migrazione su architetture cloud-native.</p>
+                    </div>
+                </div>
+
+                <div class="web-experience-item">
+                    <h3 class="web-job-header">Research Fellow - Object Wrapping Project</h3>
+                    <p class="web-job-period">11/2021 – 04/2022</p>
+
+                    <div class="web-tech-stack">
+                        <span class="web-tech-tag">Python</span>
+                        <span class="web-tech-tag">TensorFlow</span>
+                        <span class="web-tech-tag">Computer Vision</span>
+                        <span class="web-tech-tag">OpenCV</span>
+                        <span class="web-tech-tag">Unity</span>
+                    </div>
+
+                    <div class="web-description">
+                        <p>Software multipiattaforma per riconoscimento e applicazione texture personalizzate su oggetti 2D/3D tramite computer vision e machine learning. Progetto finanziato da fondi europei. <span class="web-highlight">Vincitore premio Biosmart 4th International Conference, Paris 2021</span>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="web-section">
+                <h2 class="web-section-title">Progetti Rilevanti</h2>
+
+                <div class="web-projects-grid">
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">MicroArch Designer</h3>
+                        <p class="web-job-period">08/2024 | Visual Architecture Tool</p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">Angular</span>
+                            <span class="web-tech-tag">TypeScript</span>
+                            <span class="web-tech-tag">Canvas API</span>
+                            <span class="web-tech-tag">Docker</span>
+                        </div>
+                        <div class="web-description">
+                            <p>Editor grafico per progettazione architetture microservizi con validazione constraints di connettività. <strong>Generazione automatica Docker Compose</strong> deployment-ready tramite export visuale.</p>
+                        </div>
+                    </div>
+
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">Smart Car IoT</h3>
+                        <p class="web-job-period">09/2022 – 01/2023 | <a href="https://github.com/LamFra/Secure-Smart-Car" target="_blank" style="color: var(--primary);">GitHub</a></p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">Arduino</span>
+                            <span class="web-tech-tag">Python</span>
+                            <span class="web-tech-tag">IoT</span>
+                            <span class="web-tech-tag">TLS/SSL</span>
+                            <span class="web-tech-tag">Bluetooth</span>
+                        </div>
+                        <div class="web-description">
+                            <p>Auto radiocomandata multi-modalità: controllo remoto Bluetooth e navigazione autonoma tramite sensori infrarossi. <strong>Comunicazione sicura TLS/SSL</strong> verso server Python e integrazione cloud IoT Blynk per tracking real-time.</p>
+                        </div>
+                    </div>
+
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">Smart Home Simulator</h3>
+                        <p class="web-job-period">12/2022 – 01/2023 | <a href="https://github.com/Joe-cyber/smart_home" target="_blank" style="color: var(--primary);">GitHub</a></p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">Raspberry Pi</span>
+                            <span class="web-tech-tag">Python</span>
+                            <span class="web-tech-tag">TDD</span>
+                            <span class="web-tech-tag">IoT</span>
+                        </div>
+                        <div class="web-description">
+                            <p>Simulazione completa di smart home su Raspberry Pi utilizzando <strong>Test Driven Development</strong> e mock per testing avanzato. Sistema di automazione domestica con controllo remoto dispositivi.</p>
+                        </div>
+                    </div>
+
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">Lake Level Advisor</h3>
+                        <p class="web-job-period">09/2022 | <a href="https://github.com/Joe-cyber/LakeLevelAdvisor" target="_blank" style="color: var(--primary);">GitHub</a></p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">AWS Lambda</span>
+                            <span class="web-tech-tag">Serverless</span>
+                            <span class="web-tech-tag">IFTTT</span>
+                            <span class="web-tech-tag">SMS API</span>
+                        </div>
+                        <div class="web-description">
+                            <p><strong>Servizio serverless</strong> per monitoraggio livelli lacustri con notifiche SMS automatiche. Gestione sottoscrizioni utenti e integrazione AWS Lambda + IFTTT per alerting real-time.</p>
+                        </div>
+                    </div>
+
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">ML Decision Trees Evolution</h3>
+                        <p class="web-job-period">03/2022 – 05/2022 | <a href="https://github.com/LamFra/AEGADT" target="_blank" style="color: var(--primary);">GitHub</a></p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">Machine Learning</span>
+                            <span class="web-tech-tag">Python</span>
+                            <span class="web-tech-tag">Genetic Algorithms</span>
+                            <span class="web-tech-tag">Statistical Analysis</span>
+                        </div>
+                        <div class="web-description">
+                            <p>Ricerca sull'evoluzione di Decision Trees tramite Algoritmi Genetici. <strong>Analisi comparativa performance</strong> tra metodologie batch e algoritmi evolutivi per ottimizzazione predittiva e convergenza.</p>
+                        </div>
+                    </div>
+
+                    <div class="web-project-card">
+                        <h3 class="web-job-header">Stream Data Analysis</h3>
+                        <p class="web-job-period">04/2022 – 05/2022</p>
+                        <div class="web-tech-stack">
+                            <span class="web-tech-tag">Data Science</span>
+                            <span class="web-tech-tag">MOA Framework</span>
+                            <span class="web-tech-tag">WEKA</span>
+                            <span class="web-tech-tag">Scikit-Learn</span>
+                        </div>
+                        <div class="web-description">
+                            <p><strong>Analisi empirica algoritmi real-time</strong> per processing stream di dati. Comparazione performance framework MOA, WEKA e Scikit-Learn su dataset continui ad alta velocità.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="web-section">
+                <h2 class="web-section-title">Competenze Tecniche</h2>
+
+                <div class="web-skills-grid">
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Backend Development</h4>
+                        <div class="web-skill-list">Java, Spring Boot, Python, REST API, Microservices Architecture</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Frontend Development</h4>
+                        <div class="web-skill-list">Angular, TypeScript, JavaScript, HTML/CSS, Canvas API</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Database & Storage</h4>
+                        <div class="web-skill-list">PostgreSQL, TimescaleDB, Cassandra, OpenSearch, Apache Jena TDB</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">DevOps & Cloud</h4>
+                        <div class="web-skill-list">Docker, Kubernetes, Jenkins, AWS (Lambda, Cognito), MinIO</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Messaging & Communication</h4>
+                        <div class="web-skill-list">MQTT, Apache Kafka, gRPC, WebSocket, TLS/SSL</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Performance Engineering</h4>
+                        <div class="web-skill-list">Ottimizzazione sistemi, serie temporali, analisi telemetrie</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Machine Learning & AI</h4>
+                        <div class="web-skill-list">TensorFlow, Scikit-Learn, OpenCV, Computer Vision, Algoritmi Genetici</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">IoT & Hardware</h4>
+                        <div class="web-skill-list">Arduino, Raspberry Pi, ESP32, Sensori, Bluetooth</div>
+                    </div>
+
+                    <div class="web-skill-category">
+                        <h4 class="web-skill-title">Identity Management</h4>
+                        <div class="web-skill-list">Keycloak, WSO2, AWS Cognito, Multi-tenant architecture</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education & Other Info -->
+            <section class="web-section">
+                <h2 class="web-section-title">Formazione & Certificazioni</h2>
+
+                <div class="web-experience-item">
+                    <h3 class="web-job-header">M.Sc. Informatica IoT (110/110 con Lode)</h3>
+                    <p class="web-job-period">2021-2023 | Università degli Studi di Salerno</p>
+                    <div class="web-description">
+                        <p>Specializzazione in sistemi intelligenti per l'industria 4.0. <strong>Corso interamente in inglese</strong> in contesto internazionale. Competenze in Agile, DevOps, TDD, microcontrollori e sistemi embedded.</p>
+                    </div>
+                </div>
+
+                <div class="web-experience-item">
+                    <h3 class="web-job-header">B.Sc. Informatica (101/110)</h3>
+                    <p class="web-job-period">2018-2021 | Università degli Studi di Salerno</p>
+                    <div class="web-description">
+                        Formazione completa su tecniche di programmazione e progettazione algoritmi. Linguaggi: Java, JavaScript, HTML/CSS, SQL. Esperienza nello sviluppo di applicazioni web, mobile e distribuite con Java Servlet.
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 12px;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Certificazioni</h4>
+                        <p><strong>AWS Cloud Practitioner</strong> (2023)</p>
+                        <p><strong>Biosmart Award Winner</strong> (2021)</p>
+                    </div>
+
+                    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Lingue</h4>
+                        <p><strong>Italiano:</strong> Madrelingua</p>
+                        <p><strong>Inglese:</strong> Avanzato (Studio NYC, Master in inglese)</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- STANDARD CV PRINT LAYOUT -->
+    <div class="print-container">
+        <!-- PAGINA 1 -->
+        <div class="print-header">
+            <div class="print-photo-placeholder">
+                <img src="./profile-pc.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" alt="Gioacchino Caliendo" />
+            </div>
+            <div class="print-header-info">
+                <h1 class="print-name">GIOACCHINO CALIENDO</h1>
+                <div class="print-contact-info">
+                    <span>22/02/2000 (25 anni)</span>
+                    <span>caliendo.gioacchino001@gmail.com</span>
+                    <span>+39 346 23 46 671</span>
+                    <span>linkedin.com/in/gioacchinocaliendo</span>
+                    <span>joe-cyber.github.io</span>
+                    <span>Nocera Inferiore (SA) 84014</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="print-section">
+            <h2 class="print-section-title">Esperienza Lavorativa</h2>
+
+            <div class="print-experience-item">
+                <div class="print-job-header">Backend Engineer - System Management SRL</div>
+                <div class="print-job-period">09/2023 – In corso | Progressione: Java Developer Jr → Backend Engineer</div>
+                <div class="print-tech-stack">Java Spring Boot • Python • Docker • Kubernetes • Jenkins • MQTT • Kafka • gRPC • MinIO • WebSocket • Angular • PostgreSQL • Cassandra • OpenSearch • Apache Jena TDB</div>
+
+                <div class="print-description">
+                    Sviluppo di sistema multi-linguaggio per system integration (Java/JavaScript/Python), architetturalmente flessibile da monolita a piattaforma microservizi. <span class="print-highlight">Sviluppatore con visione end-to-end dell’intero prodotto</span> dopo uscita dei senior developer. Team variabile 2-7 persone (BE/FE/PM).
+                </div>
+
+                <div style="margin: 6px 0; padding: 8px; background: #e8f5e8; border-radius: 4px;">
+                    <strong style="color: #2d5016; font-size: 11px;">PROGETTI:</strong><br>
+                    <span style="font-size: 10px;">• Smart Cities Platform (microservizi) • Monitoraggio Depositi AWS • Dispositivi rete alta criticità</span>
+                </div>
+
+                <div class="print-description">
+                    <strong>Performance Engineering:</strong> <span class="print-highlight">Ottimizzazione sistema da 2M telemetrie/45sec a 30M+/1.3sec</span> tramite integrazione TimescaleDB. Gestione multi-tenant (Keycloak/WSO2/AWS Cognito).
+                </div>
+
+                <div class="print-description">
+                    <strong>Leadership Tecnica:</strong> Training nuovi BE developers, proposte architetturali (cluster HA, versione light per edge computing, piattaforma recovery microservizi).
+                </div>
+
+                <div class="print-description">
+                    <strong>Business Impact:</strong> Partecipazione riunioni strategiche commerciali, <span class="print-highlight">contributo decisivo per investimento aziendale sulla piattaforma</span>.
+                </div>
+            </div>
+
+            <div class="print-experience-item">
+                <div class="print-job-header">Software Developer - Area Ricerca (Part-time) - Nexsoft SPA</div>
+                <div class="print-job-period">02/2023 – 06/2023</div>
+                <div class="print-description">Proseguimento attività di ricerca in continuità con progetto Object Wrapping. Estensione funzionalità applicazioni esistenti con integrazione nuove feature e migrazione su architetture cloud-native.</div>
+            </div>
+
+            <div class="print-experience-item">
+                <div class="print-job-header">Research Fellow - Object Wrapping Project</div>
+                <div class="print-job-period">11/2021 – 04/2022 | Partner: Grafica Santoro, Nexsoft SPA</div>
+                <div class="print-tech-stack">Python • TensorFlow • Unity • OpenCV • Pillow</div>
+                <div class="print-description">Software multipiattaforma per riconoscimento e applicazione texture personalizzate su oggetti 2D/3D tramite computer vision e machine learning. Progetto finanziato da fondi europei. <span class="print-highlight">Vincitore premio Biosmart 4th International Conference, Paris 2021</span>.</div>
+            </div>
+        </div>
+
+        <div class="print-section">
+            <h2 class="print-section-title">Competenze Tecniche</h2>
+            <div class="print-skills-grid">
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Backend Development</div>
+                    Java, Spring Boot, Python, REST API, Microservices Architecture
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Frontend Development</div>
+                    Angular, TypeScript, JavaScript, HTML/CSS, Canvas API
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Database & Storage</div>
+                    PostgreSQL, TimescaleDB, Cassandra, OpenSearch, Apache Jena TDB
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">DevOps & Cloud</div>
+                    Docker, Kubernetes, Jenkins, AWS (Lambda, Cognito), MinIO
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Messaging</div>
+                    MQTT, Apache Kafka, gRPC, WebSocket, TLS/SSL
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Performance Engineering</div>
+                    Ottimizzazione sistemi, serie temporali, analisi telemetrie
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Machine Learning & AI</div>
+                    TensorFlow, Scikit-Learn, OpenCV, Computer Vision, Algoritmi Genetici
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">IoT & Hardware</div>
+                    Arduino, Raspberry Pi, ESP32, Sensori, Bluetooth
+                </div>
+                <div class="print-skill-category">
+                    <div class="print-skill-title">Identity Management</div>
+                    Keycloak, WSO2, AWS Cognito, Multi-tenant architecture
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGINA 2 -->
+        <div class="page-break"></div>
+
+        <div class="print-section">
+            <h2 class="print-section-title">Progetti Rilevanti</h2>
+
+            <div class="print-project-item">
+                <div class="print-job-header">MicroArch Designer - Visual Architecture Tool</div>
+                <div class="print-job-period">08/2024 | Progetto Personale</div>
+                <div class="print-tech-stack">Angular • TypeScript • Canvas API • Docker Compose • Drag&Drop • Graph Theory</div>
+                <div class="print-description">
+                    Editor grafico per progettazione architetture microservizi con validazione constraints di connettività. <strong>Generazione automatica Docker Compose completo e deployment-ready</strong> tramite export visuale. Soluzione innovativa per semplificare la complessità architetturale enterprise.
+                </div>
+            </div>
+
+            <div class="print-project-item">
+                <div class="print-job-header">Smart Car (IoT + Sicurezza)</div>
+                <div class="print-job-period">09/2022 – 01/2023 | github.com/LamFra/Secure-Smart-Car</div>
+                <div class="print-tech-stack">Arduino • Python • Bluetooth • Sensori IR • TLS/SSL • Blynk Cloud IoT</div>
+                <div class="print-description">
+                    Auto radiocomandata multi-modalità: controllo remoto Bluetooth e navigazione autonoma tramite sensori infrarossi. <strong>Implementazione sicura con comunicazione TLS/SSL</strong> verso server Python e integrazione cloud IoT per tracking posizione real-time.
+                </div>
+            </div>
+
+            <div class="print-project-item">
+                <div class="print-job-header">Genetic Algorithms su Decision Trees</div>
+                <div class="print-job-period">03/2022 – 05/2022 | github.com/LamFra/AEGADT</div>
+                <div class="print-tech-stack">Python • Machine Learning • Algoritmi Genetici • Decision Trees • Statistical Analysis</div>
+                <div class="print-description">
+                    Ricerca sull'evoluzione di Decision Trees tramite Algoritmi Genetici. <strong>Analisi comparativa performance</strong> e identificazione tasso miglioramento per ottimizzazione predittiva. Studio approfondito su convergenza algoritmica e generazioni ottimali.
+                </div>
+            </div>
+        </div>
+
+        <div class="print-section">
+            <h2 class="print-section-title">Istruzione e Formazione</h2>
+
+            <div class="print-education-item">
+                <div class="print-job-header">Laurea Magistrale in Informatica - IoT (110/110 con Lode)</div>
+                <div class="print-job-period">09/2021 – 09/2023 | Università degli studi di Salerno</div>
+                <div class="print-description">Specializzazione in sistemi intelligenti per l'industria 4.0 con focus su Internet of Things. <strong>Corso erogato interamente in inglese</strong> in contesto internazionale. Competenze in metodologie Agile, DevOps, Test Driven Development, programmazione microcontrollori e sistemi embedded.</div>
+            </div>
+
+            <div class="print-education-item">
+                <div class="print-job-header">Laurea Triennale in Informatica (101/110)</div>
+                <div class="print-job-period">09/2018 – 09/2021 | Università degli studi di Salerno</div>
+                <div class="print-description">Formazione completa su tecniche di programmazione e progettazione algoritmi. Linguaggi: Java, JavaScript, HTML/CSS, SQL. Esperienza nello sviluppo di applicazioni web, mobile e distribuite con Java Servlet.</div>
+            </div>
+        </div>
+
+        <div class="print-two-column">
+            <div>
+                <div class="print-section">
+                    <h2 class="print-section-title">Competenze Linguistiche</h2>
+                    <div style="background: #f8fafc; padding: 10px; border-radius: 4px;">
+                        <div style="margin-bottom: 5px;"><strong>Italiano:</strong> Lingua madre</div>
+                        <div><strong>Inglese:</strong> Competenze consolidate (studio intensivo NYC 2018, laurea magistrale interamente in inglese)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="print-section">
+                    <h2 class="print-section-title">Certificazioni e Premi</h2>
+                    <div style="background: #f0f9ff; padding: 10px; border-radius: 4px;">
+                        <div style="margin-bottom: 8px;"><strong>2023</strong> - AWS Cloud Practitioner (2 Badge conseguiti)</div>
+                        <div><strong>2021</strong> - Vincitore premio Biosmart 4th International Conference on Bioengineering for Smart Technologies, Paris/Online (Progetto Object Wrapping)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="print-section">
+            <h2 class="print-section-title">Competenze Interpersonali</h2>
+            <div style="background: #fefce8; padding: 10px; border-radius: 4px; border-left: 3px solid #eab308;">
+                <div style="font-size: 11px;">
+                    <strong>Comunicazione:</strong> Presentazioni stakeholder/CTO, riunioni strategiche commerciali.
+                    <strong>Leadership:</strong> Training sviluppatori, knowledge transfer, proposte architetturali.
+                    <strong>Problem Solving:</strong> Risoluzione problemi complessi, ottimizzazione performance enterprise.
+                </div>
+            </div>
+        </div>
+
+        <div class="print-footer">
+            Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003 e del GDPR 2016/679 per le finalità connesse alla valutazione della candidatura.
+        </div>
+    </div>
+
+    <!-- SHORT CV LAYOUT -->
+    <div class="short-container">
+        <div class="cv-container">
+            <!-- HEADER -->
+            <div class="cv-header">
+                <div class="photo-section">
+                    <img src="./profile-pc.jpg" alt="Gioacchino Caliendo" />
+                </div>
+                <div class="header-info">
+                    <h1 class="name">GIOACCHINO CALIENDO</h1>
+                    <p class="title">Backend Engineer • Performance Specialist • IoT Developer</p>
+                    <div class="contact-grid">
+                        <span>📧 caliendo.gioacchino001@gmail.com</span>
+                        <span>📱 +39 346 23 46 671</span>
+                        <span>💼 linkedin.com/in/gioacchinocaliendo</span>
+                        <span>💻 joe-cyber.github.io</span>
+                        <span>📍 Nocera Inferiore (SA) 84014</span>
+                        <span>🎂 22/02/2000 (25 anni)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE -->
+            <div class="section">
+                <h2 class="section-title">Esperienza Lavorativa</h2>
+
+                <div class="experience-item">
+                    <div class="job-title">Backend Engineer - System Management SRL</div>
+                    <div class="job-period">09/2023 – In corso</div>
+                    <div class="tech-stack">Java Spring Boot • Python • Docker • Kubernetes • AWS • TimescaleDB • Kafka • gRPC</div>
+                    <div class="description">
+                        Sviluppo sistema multi-linguaggio per system integration. <span class="highlight">Ottimizzazione da 2M telemetrie/45sec a 30M+/1.3sec</span> tramite TimescaleDB. Training BE developers, proposte architetturali cluster HA. Progetti: Smart Cities Platform (microservizi), monitoraggio depositi AWS, dispositivi rete alta criticità.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Research Fellow and Software Developer - Nexsoft SPA - Object Wrapping Project</div>
+                    <div class="job-period">02/2023 – 06/2023</div>
+                    <div class="description">
+                        Ricerca Object Wrapping. Migrazione cloud-native, estensione funzionalità applicazioni esistenti.
+                        Software multipiattaforma computer vision ML per texture personalizzate. <span class="highlight">Winner Biosmart Conference Paris 2021</span>. Progetto finanziato fondi europei.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILLS -->
+            <div class="section">
+                <h2 class="section-title">Competenze Tecniche</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="skill-title">Backend & API</div>
+                        <div class="skill-list">Java Spring Boot, Python, REST API, Microservices, Performance Tuning</div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-title">DevOps & Cloud</div>
+                        <div class="skill-list">Docker, Kubernetes, Jenkins, AWS Lambda/Cognito, CI/CD</div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-title">Database & Storage</div>
+                        <div class="skill-list">PostgreSQL, TimescaleDB, Cassandra, OpenSearch</div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-title">Frontend</div>
+                        <div class="skill-list">Angular, TypeScript, Canvas API, HTML/CSS</div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-title">Messaging & IoT</div>
+                        <div class="skill-list">Kafka, MQTT, gRPC, WebSocket, Arduino, Raspberry Pi</div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-title">ML & Identity</div>
+                        <div class="skill-list">TensorFlow, OpenCV, Keycloak, AWS Cognito, Multi-tenant</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECTS -->
+            <div class="section">
+                <h2 class="section-title">Progetti Chiave</h2>
+
+                <div class="project-item">
+                    <div class="project-title">MicroArch Designer (2024)</div>
+                    <div class="project-period">Angular • TypeScript • Canvas API • Docker Compose</div>
+                    <div class="description">Editor grafico architetture microservizi con export Docker Compose automatico. Validazione constraints connettività.</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">Smart Car IoT Security (2022-2023)</div>
+                    <div class="project-period">Arduino • Python • TLS/SSL • Bluetooth • IoT Cloud</div>
+                    <div class="description">Auto autonoma multi-modalità con comunicazione sicura TLS/SSL e tracking real-time cloud IoT.</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">ML Decision Trees Evolution (2022)</div>
+                    <div class="project-period">Python • Machine Learning • Algoritmi Genetici</div>
+                    <div class="description">Ricerca evoluzione Decision Trees tramite algoritmi genetici. Analisi performance e convergenza.</div>
+                </div>
+            </div>
+
+            <!-- EDUCATION & OTHER -->
+            <div class="two-column">
+                <div>
+                    <div class="section">
+                        <h2 class="section-title">Formazione</h2>
+
+                        <div class="education-item">
+                            <div class="job-title">M.Sc. Informatica IoT (110/110 Lode)</div>
+                            <div class="job-period">2021-2023 • Università di Salerno</div>
+                            <div class="description">Corso in inglese. Specializzazione Industry 4.0, Agile, DevOps, TDD.</div>
+                        </div>
+
+                        <div class="education-item">
+                            <div class="job-title">B.Sc. Informatica (101/110)</div>
+                            <div class="job-period">2018-2021 • Università di Salerno</div>
+                            <div class="description">Programmazione, algoritmi, Java, JavaScript, SQL, web/mobile.</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="section-title">Competenze Chiave</h2>
+                        <div style="font-size: 10px; line-height: 1.4;">
+                            <div style="margin-bottom: 6px;"><strong>Performance Engineering:</strong> Ottimizzazione sistemi enterprise</div>
+                            <div style="margin-bottom: 6px;"><strong>Leadership Tecnica:</strong> Training sviluppatori, proposte architetturali</div>
+                            <div><strong>Business Impact:</strong> Riunioni strategiche, investimenti aziendali</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- Due colonne affiancate per Certificazioni e Lingue -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                        <div class="section">
+                            <h2 class="section-title" style="font-size: 11px;">Certificazioni</h2>
+                            <div style="font-size: 9px;">
+                                <div><strong>AWS Cloud Practitioner</strong> (2023)</div>
+                                <div><strong>Biosmart Award Winner</strong> (2021)</div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h2 class="section-title" style="font-size: 11px;">Lingue</h2>
+                            <div style="font-size: 9px;">
+                                <div><strong>Italiano:</strong> Madrelingua</div>
+                                <div><strong>Inglese:</strong> Avanzato</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer spostato qui per riempire lo spazio -->
+                    <div class="footer" style="margin-top: 10px; font-size: 8px;">
+                        Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003 e del GDPR 2016/679 per le finalità connesse alla valutazione della candidatura.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EUROPASS CV LAYOUT -->
+    <div class="europass-container">
+        <div class="europass-header">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div style="width: 100px; height: 120px; border: 3px solid white; overflow: hidden; border-radius: 8px; flex-shrink: 0;">
+                    <img src="./profile-pc.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Gioacchino Caliendo" />
+                </div>
+                <div>
+                    <h1 class="europass-name">GIOACCHINO CALIENDO</h1>
+                    <p class="europass-title">Backend Engineer • Solution Architect</p>
+                </div>
+            </div>
+            <div class="europass-contact-grid">
+                <div>📧 caliendo.gioacchino001@gmail.com</div>
+                <div>📱 +39 346 23 46 671</div>
+                <div>💼 linkedin.com/in/gioacchinocaliendo</div>
+                <div>💻 joe-cyber.github.io</div>
+                <div>📍 Via F. Dentice d'Accadia, 61, Nocera Inferiore (SA) 84014</div>
+                <div>🎂 22/02/2000 (25 anni)</div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Esperienza Lavorativa</h2>
+
+            <div class="europass-entry">
+                <div class="europass-dates">09/2023 –<br>In corso</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Backend Engineer</div>
+                    <div class="europass-organization">System Management SRL, Italia</div>
+                    <div class="europass-description">
+                        Sviluppo di sistema multi-linguaggio per system integration (Java/JavaScript/Python), architetturalmente flessibile da monolita a piattaforma microservizi. Sviluppatore con visione end-to-end dell’intero prodotto. Ottimizzazione sistema da 2M telemetrie/45sec a 30M+/1.3sec tramite integrazione TimescaleDB. Training nuovi BE developers, proposte architetturali (cluster HA, versione light per edge computing). Partecipazione riunioni strategiche commerciali con contributo decisivo per investimento aziendale.
+                    </div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">02/2023 –<br>06/2023</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Software Developer - Area Ricerca</div>
+                    <div class="europass-organization">Nexsoft SPA, Italia</div>
+                    <div class="europass-description">Proseguimento attività di ricerca in continuità con progetto Object Wrapping. Estensione funzionalità applicazioni esistenti con integrazione nuove feature e migrazione su architetture cloud-native.</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">11/2021 –<br>04/2022</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Research Fellow - Object Wrapping Project</div>
+                    <div class="europass-organization">Università di Salerno, Nexsoft SPA</div>
+                    <div class="europass-description">Software multipiattaforma per riconoscimento e applicazione texture personalizzate su oggetti 2D/3D tramite computer vision e machine learning. Progetto finanziato da fondi europei. Vincitore premio Biosmart 4th International Conference, Paris 2021.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Istruzione e Formazione</h2>
+
+            <div class="europass-entry">
+                <div class="europass-dates">09/2021 –<br>09/2023</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Laurea Magistrale in Informatica - IoT</div>
+                    <div class="europass-organization">Università degli Studi di Salerno, Italia</div>
+                    <div class="europass-description">Voto: 110/110 con Lode. Specializzazione in sistemi intelligenti per l'industria 4.0 con focus su Internet of Things. Corso erogato interamente in inglese in contesto internazionale. Competenze in metodologie Agile, DevOps, Test Driven Development, programmazione microcontrollori e sistemi embedded.</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">09/2018 –<br>09/2021</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Laurea Triennale in Informatica</div>
+                    <div class="europass-organization">Università degli Studi di Salerno, Italia</div>
+                    <div class="europass-description">Voto: 101/110. Formazione completa su tecniche di programmazione e progettazione algoritmi. Linguaggi: Java, JavaScript, HTML/CSS, SQL. Esperienza nello sviluppo di applicazioni web, mobile e distribuite con Java Servlet.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Competenze Professionali</h2>
+
+            <div class="europass-skills-grid">
+                <div>
+                    <div class="europass-entry">
+                        <div class="europass-dates">Backend Development</div>
+                        <div class="europass-content">
+                            <div class="europass-description">Java Spring Boot, Python, REST API, Microservices Architecture, Performance Engineering</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">DevOps & Cloud</div>
+                        <div class="europass-content">
+                            <div class="europass-description">Docker, Kubernetes, Jenkins, AWS (Lambda, Cognito), MinIO, CI/CD Pipeline</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">Database & Storage</div>
+                        <div class="europass-content">
+                            <div class="europass-description">PostgreSQL, TimescaleDB, Cassandra, OpenSearch, Apache Jena TDB</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">Frontend Development</div>
+                        <div class="europass-content">
+                            <div class="europass-description">Angular, TypeScript, JavaScript, HTML/CSS, Canvas API</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="europass-entry">
+                        <div class="europass-dates">Messaging & Communication</div>
+                        <div class="europass-content">
+                            <div class="europass-description">MQTT, Apache Kafka, gRPC, WebSocket, TLS/SSL</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">Machine Learning & AI</div>
+                        <div class="europass-content">
+                            <div class="europass-description">TensorFlow, Scikit-Learn, OpenCV, Computer Vision, Algoritmi Genetici</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">IoT & Hardware</div>
+                        <div class="europass-content">
+                            <div class="europass-description">Arduino, Raspberry Pi, ESP32, Sensori, Bluetooth</div>
+                        </div>
+                    </div>
+
+                    <div class="europass-entry">
+                        <div class="europass-dates">Identity Management</div>
+                        <div class="europass-content">
+                            <div class="europass-description">Keycloak, WSO2, AWS Cognito, Multi-tenant architecture</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Progetti Rilevanti</h2>
+
+            <div class="europass-entry">
+                <div class="europass-dates">08/2024</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">MicroArch Designer - Visual Architecture Tool</div>
+                    <div class="europass-description">Editor grafico per progettazione architetture microservizi con validazione constraints di connettività. Generazione automatica Docker Compose completo e deployment-ready tramite export visuale. Tecnologie: Angular, TypeScript, Canvas API, Docker Compose.</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">09/2022 –<br>01/2023</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Smart Car IoT + Security</div>
+                    <div class="europass-description">Auto radiocomandata multi-modalità: controllo remoto Bluetooth e navigazione autonoma tramite sensori infrarossi. Implementazione sicura con comunicazione TLS/SSL verso server Python e integrazione cloud IoT per tracking posizione real-time. Tecnologie: Arduino, Python, Bluetooth, TLS/SSL, Blynk Cloud IoT.</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">03/2022 –<br>05/2022</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">ML Decision Trees Evolution</div>
+                    <div class="europass-description">Ricerca sull'evoluzione di Decision Trees tramite Algoritmi Genetici. Analisi comparativa performance e identificazione tasso miglioramento per ottimizzazione predittiva. Studio approfondito su convergenza algoritmica e generazioni ottimali. Tecnologie: Python, Machine Learning, Algoritmi Genetici.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Competenze Linguistiche</h2>
+
+            <div class="europass-entry">
+                <div class="europass-dates">Italiano</div>
+                <div class="europass-content">
+                    <div class="europass-description">Lingua madre</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">Inglese</div>
+                <div class="europass-content">
+                    <div class="europass-description">Competenze consolidate (studio intensivo NYC 2018, laurea magistrale interamente in inglese)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-section">
+            <h2 class="europass-section-title">Certificazioni e Premi</h2>
+
+            <div class="europass-entry">
+                <div class="europass-dates">2023</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">AWS Cloud Practitioner</div>
+                    <div class="europass-description">Certificazione Amazon Web Services - 2 Badge conseguiti</div>
+                </div>
+            </div>
+
+            <div class="europass-entry">
+                <div class="europass-dates">2021</div>
+                <div class="europass-content">
+                    <div class="europass-job-title">Biosmart Award Winner</div>
+                    <div class="europass-description">Vincitore premio Biosmart 4th International Conference on Bioengineering for Smart Technologies, Paris/Online (Progetto Object Wrapping)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="europass-footer">
+            Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003 e del GDPR 2016/679 per le finalità connesse alla valutazione della candidatura.
+        </div>
+    </div>
+
+    <style>
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5aa0;
+            --primary-light: #3d6bb3;
+            --secondary: #1a365d;
+            --accent: #e3f2fd;
+            --text: #333;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* === WEB LAYOUT (default) === */
+        .web-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .web-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .web-header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="5" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="15" r="1" fill="white" opacity="0.1"/><circle cx="70" cy="8" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="20" fill="url(%23grain)"/></svg>');
+                opacity: 0.3;
+            }
+
+        .web-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .web-photo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden; /* Importante per nascondere parti eccedenti */
+        }
+
+            .web-photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Mantiene proporzioni e riempie il contenitore */
+                object-position: center top; /* Centra l'immagine */
+            }
+
+        .web-name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .web-title {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .web-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .web-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease;
+        }
+
+            .web-contact-item:hover {
+                transform: translateY(-2px);
+            }
+
+        /* DOWNLOAD BUTTONS */
+        .download-buttons {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(44, 90, 160, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+            .download-btn:hover {
+                background: var(--primary-light);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(44, 90, 160, 0.4);
+            }
+
+            .download-btn.short {
+                background: #059669;
+            }
+
+                .download-btn.short:hover {
+                    background: #047857;
+                }
+
+            .download-btn.europass {
+                background: #dc2626;
+            }
+
+                .download-btn.europass:hover {
+                    background: #b91c1c;
+                }
+
+        .web-content {
+            padding: 3rem 2rem;
+        }
+
+        .web-section {
+            margin-bottom: 3rem;
+        }
+
+        .web-section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+            .web-section-title.sticky {
+                color: white;
+                background: var(--primary);
+                padding: 1rem 2rem;
+                border-radius: 0;
+                box-shadow: 0 2px 20px rgba(44, 90, 160, 0.3);
+            }
+
+                .web-section-title.sticky::after {
+                    display: none;
+                }
+
+            .web-section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background: var(--primary-light);
+            }
+
+        .web-experience-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .web-experience-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            }
+
+        .web-job-header {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .web-job-period {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .web-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .web-tech-tag {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(44, 90, 160, 0.2);
+        }
+
+        .web-description {
+            color: var(--text);
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .web-highlight {
+            background: linear-gradient(120deg, #fff3cd 0%, #fff3cd 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .web-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .web-project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .web-project-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            }
+
+            .web-project-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            }
+
+        .web-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .web-skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .web-skill-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .web-skill-list {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .web-header {
+                padding: 2rem 1rem;
+            }
+
+            .web-name {
+                font-size: 2.2rem;
+            }
+
+            .web-title {
+                font-size: 1.1rem;
+            }
+
+            .web-contact {
+                gap: 1rem;
+            }
+
+            .web-content {
+                padding: 2rem 1rem;
+            }
+
+            .web-section-title {
+                font-size: 1.6rem;
+            }
+
+            .download-buttons {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .download-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .web-projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .web-skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === PRINT STYLES === */
+        .print-container, .short-container, .europass-container {
+            display: none;
+        }
+
+        /* === STANDARD CV PRINT === */
+        @media print {
+            .download-buttons {
+                display: none !important;
+            }
+
+            .web-container {
+                display: none !important;
+            }
+
+            .short-container, .europass-container {
+                display: none !important;
+            }
+
+            body.print-standard .print-container {
+                display: block !important;
+            }
+
+            body {
+                font-size: 12px;
+                line-height: 1.3;
+                padding: 15px;
+                color: #333;
+                background: white;
+            }
+
+            .print-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+            }
+
+            .print-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 18px;
+                padding-bottom: 12px;
+                border-bottom: 3px solid #2c5aa0;
+            }
+
+            .print-photo-placeholder {
+                width: 100px;
+                height: 130px;
+                border: 2px solid #2c5aa0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                color: #666;
+                text-align: center;
+                flex-shrink: 0;
+                background: #f9f9f9;
+                overflow: hidden; /* Aggiunto per nascondere parti eccedenti */
+                border-radius: 8px; /* Opzionale: angoli arrotondati */
+            }
+
+            .print-header-info {
+                flex: 1;
+            }
+
+            .print-name {
+                font-size: 28px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+            }
+
+            .print-contact-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px 20px;
+                font-size: 11px;
+            }
+
+            .print-section {
+                margin-bottom: 15px;
+            }
+
+            .print-section-title {
+                font-size: 14px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+                text-transform: uppercase;
+                border-bottom: 2px solid #2c5aa0;
+                padding-bottom: 2px;
+            }
+
+            .print-experience-item, .print-project-item {
+                margin-bottom: 12px;
+                padding: 10px;
+                background: #fafbfc;
+                border-left: 3px solid #2c5aa0;
+                border-radius: 0 3px 3px 0;
+                page-break-inside: avoid;
+            }
+
+            .print-job-header {
+                font-weight: bold;
+                color: #1a365d;
+                margin-bottom: 3px;
+                font-size: 13px;
+            }
+
+            .print-job-period {
+                color: #666;
+                font-size: 11px;
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+
+            .print-tech-stack {
+                background: #e3f2fd;
+                padding: 4px 6px;
+                margin: 5px 0;
+                border-radius: 3px;
+                font-size: 10px;
+                color: #1565c0;
+                border: 1px solid #bbdefb;
+            }
+
+            .print-description {
+                margin-top: 3px;
+                text-align: justify;
+                line-height: 1.3;
+                font-size: 11px;
+            }
+
+            .print-skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 15px;
+                margin-top: 10px;
+            }
+
+            .print-skill-category {
+                background: white;
+                padding: 8px;
+                border-radius: 4px;
+                border: 1px solid #e0e7ff;
+            }
+
+            .print-skill-title {
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 3px;
+                font-size: 11px;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .print-two-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .print-education-item {
+                background: white;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 8px;
+                border: 1px solid #e5e7eb;
+            }
+
+            .print-highlight {
+                background: #fff3cd;
+                padding: 2px 4px;
+                border-radius: 3px;
+                font-weight: bold;
+            }
+
+            .print-footer {
+                margin-top: 15px;
+                font-size: 9px;
+                color: #666;
+                text-align: center;
+                border-top: 1px solid #eee;
+                padding-top: 8px;
+            }
+
+            @page {
+                size: A4;
+                margin: 0.4in;
+            }
+        }
+
+        /* === SHORT CV PRINT === */
+        @media print {
+            body.print-short .short-container {
+                display: block !important;
+            }
+
+            body.print-short .print-container,
+            body.print-short .europass-container {
+                display: none !important;
+            }
+
+            .short-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+                font-size: 11px;
+                line-height: 1.2;
+            }
+
+            .short-header {
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 2px solid #2c5aa0;
+            }
+
+            .short-name {
+                font-size: 24px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 5px;
+            }
+
+            .short-title {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+
+            .short-contact {
+                font-size: 10px;
+                color: #333;
+            }
+
+            .short-section {
+                margin-bottom: 15px;
+            }
+
+            .short-section-title {
+                font-size: 12px;
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 8px;
+                text-transform: uppercase;
+                border-bottom: 1px solid #2c5aa0;
+                padding-bottom: 2px;
+            }
+
+            .short-item {
+                margin-bottom: 8px;
+                font-size: 10px;
+            }
+
+            .short-job-header {
+                font-weight: bold;
+                color: #1a365d;
+                font-size: 11px;
+            }
+
+            .short-period {
+                color: #666;
+                font-style: italic;
+                font-size: 9px;
+            }
+
+            .short-description {
+                margin-top: 2px;
+                line-height: 1.3;
+            }
+
+            .short-skills {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 10px;
+                font-size: 9px;
+            }
+
+            .short-skill-category {
+                margin-bottom: 5px;
+            }
+
+            .short-skill-title {
+                font-weight: bold;
+                color: #2c5aa0;
+                margin-bottom: 2px;
+            }
+        }
+
+        /* === EUROPASS CV PRINT === */
+        @media print {
+            body.print-europass .europass-container {
+                display: block !important;
+            }
+
+            body.print-europass .print-container,
+            body.print-europass .short-container {
+                display: none !important;
+            }
+
+            .europass-container {
+                max-width: 210mm;
+                margin: 0 auto;
+                background: white;
+                font-family: Arial, sans-serif;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .europass-header {
+                background: #1e3a8a;
+                color: white;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .europass-name {
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .europass-title {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .europass-contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                font-size: 10px;
+            }
+
+            .europass-section {
+                margin-bottom: 20px;
+            }
+
+            .europass-section-title {
+                background: #1e3a8a;
+                color: white;
+                padding: 8px 15px;
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-bottom: 10px;
+            }
+
+            .europass-entry {
+                display: grid;
+                grid-template-columns: 120px 1fr;
+                gap: 15px;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+                .europass-entry:last-child {
+                    border-bottom: none;
+                }
+
+            .europass-dates {
+                font-size: 10px;
+                color: #666;
+                font-weight: bold;
+            }
+
+            .europass-content {
+                font-size: 10px;
+            }
+
+            .europass-job-title {
+                font-weight: bold;
+                color: #1e3a8a;
+                margin-bottom: 3px;
+            }
+
+            .europass-organization {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .europass-description {
+                line-height: 1.3;
+                text-align: justify;
+            }
+
+            .europass-skills-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .europass-skill-category {
+                margin-bottom: 10px;
+            }
+
+            .europass-skill-title {
+                font-weight: bold;
+                color: #1e3a8a;
+                margin-bottom: 5px;
+            }
+
+            .europass-footer {
+                margin-top: 30px;
+                font-size: 9px;
+                color: #666;
+                text-align: center;
+                border-top: 1px solid #e5e7eb;
+                padding-top: 10px;
+            }
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #ddd;
+                text-decoration: underline;
+            }
+    </style>
+
+    <script>
+        function printCV(type) {
+            // Remove all print classes
+            document.body.classList.remove('print-standard', 'print-short', 'print-europass');
+
+            // Add specific print class
+            if (type === 'standard') {
+                document.body.classList.add('print-standard');
+            } else if (type === 'short') {
+                document.body.classList.add('print-short');
+            } else if (type === 'europass') {
+                document.body.classList.add('print-europass');
+            }
+
+            // Trigger print
+            setTimeout(() => {
+                window.print();
+            }, 100);
+        }
+
+        // Sticky section titles
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10px 0px 0px 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const title = entry.target.querySelector('.web-section-title');
+                if (title && !entry.isIntersecting) {
+                    title.classList.add('sticky');
+                } else if (title) {
+                    title.classList.remove('sticky');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.web-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
