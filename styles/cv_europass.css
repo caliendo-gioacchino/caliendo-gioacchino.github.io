@@ -1,0 +1,160 @@
+/* Nascondi di default */
+.print-container,
+.short-container,
+.europass-container {
+    display: none;
+}
+
+/* EUROPASS CV PRINT */
+@media print {
+    .download-buttons,
+    .web-container {
+        display: none !important;
+    }
+
+    body.print-europass .europass-container {
+        display: block !important;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #333;
+        background: white;
+    }
+
+    .europass-container {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: white;
+    }
+
+    .europass-name {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .europass-title {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .europass-contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        font-size: 10px;
+    }
+
+    .europass-section {
+        margin-bottom: 20px;
+    }
+
+    .europass-section-title {
+        background: #1e3a8a;
+        color: white;
+        padding: 8px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .europass-entry {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 15px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .europass-entry:last-child {
+        border-bottom: none;
+    }
+
+    .europass-dates {
+        font-size: 10px;
+        color: #666;
+        font-weight: bold;
+    }
+
+    .europass-content {
+        font-size: 10px;
+    }
+
+    .europass-job-title {
+        font-weight: bold;
+        color: #1e3a8a;
+        margin-bottom: 3px;
+    }
+
+    .europass-organization {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .europass-description {
+        line-height: 1.3;
+        text-align: justify;
+    }
+
+    .europass-skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .europass-skill-category {
+        margin-bottom: 10px;
+    }
+
+    .europass-skill-title {
+        font-weight: bold;
+        color: #1e3a8a;
+        margin-bottom: 5px;
+    }
+
+    .europass-footer {
+        margin-top: 30px;
+        font-size: 9px;
+        color: #666;
+        text-align: center;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 10px;
+    }
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ddd;
+    text-decoration: underline;
+}
+
+.web-photo-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    border: 4px solid white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden; /* Importante per nascondere parti eccedenti */
+}
+
+.web-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporzioni e riempie il contenitore */
+    object-position: center top; /* Centra l'immagine */
+}
