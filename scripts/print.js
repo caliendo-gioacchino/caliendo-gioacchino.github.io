@@ -1,7 +1,7 @@
 const cvFiles = {
-    standard: 'cv_structures/standard.html',
-    short: 'cv_structures/short.html',
-    europass: 'cv_structures/europass.html'
+    standard: 'structures/standard.html',
+    short: 'structures/short.html',
+    europass: 'structures/europass.html'
 };
 
 async function printCV(type) {
