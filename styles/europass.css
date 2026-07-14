@@ -3,6 +3,103 @@
     box-sizing: border-box;
 }
 
+:root {
+    --ep-blue: #0056A3;
+    --ep-blue-dark: #003D73;
+}
+
+.ep-header {
+    border-bottom: none;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.ep-header-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.ep-photo-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--ep-blue);
+    background: #f2f2f2;
+}
+
+.ep-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.ep-header-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.ep-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ep-blue-dark);
+    margin: 0 0 10px 0;
+}
+
+.ep-logo-box {
+    width: 200px;
+    flex-shrink: 0;
+    text-align: right;
+    margin-top: -40px;
+}
+
+.ep-logo-box img {
+    width: 100%;
+}
+
+.ep-contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    font-size: 12px;
+}
+
+.ep-contact-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ep-icon {
+    color: var(--ep-blue);
+    margin-right: 4px;
+}
+
+.ep-label {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.ep-contact-grid a {
+    color: var(--ep-blue-dark);
+    text-decoration: none;
+}
+
+.ep-contact-grid > div {
+    white-space: nowrap;
+}
+
+.ep-photo-info-row {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #262626;
@@ -17,13 +114,6 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 30px 40px;
-}
-
-/* HEADER */
-.ep-header {
-    border-bottom: 3px solid #1a4f8b;
-    padding-bottom: 16px;
-    margin-bottom: 24px;
 }
 
 .ep-name {
@@ -56,19 +146,21 @@ body {
 }
 
 .ep-section-title {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    color: #ffffff;
-    background: #1a4f8b;
-    padding: 6px 10px;
+    color: var(--ep-blue-dark);
+    background: none;
+    padding: 0 0 4px 0;
     margin: 0 0 12px 0;
     letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--ep-blue-dark);
 }
 
 .ep-section-body p {
     margin: 4px 0;
 }
+
 
 /* TIMELINE ITEMS */
 .ep-timeline-item {
@@ -149,10 +241,7 @@ body {
     body.print-europass .europass-container {
         display: block !important;
     }
-    @page {
-        size: A4;
-        margin: 10mm;
-    }
+
     .europass-container {
         padding: 0;
         max-width: 100%;

@@ -225,11 +225,6 @@
         border-top: 1px solid #eee;
         padding-top: 8px;
     }
-
-    @page {
-        size: A4;
-        margin: 0;
-    }
 }
 
 /* Hide for screen view */
